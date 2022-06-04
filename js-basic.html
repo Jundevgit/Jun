@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js-basic</title>
+    <style>
+        html {
+            margin: 8px;
+        }
+        h1, h2, h3 {
+            color: seagreen;
+        }
+        .table__math {
+            margin: auto;
+            border-collapse: collapse;
+            width: 60%;
+            height: 350px;
+            font-size: 18px;
+            text-align: center;
+        }
+        .table__math tr:nth-child(odd) {
+            background-color: rgb(222, 223, 223);
+        }
+        th {
+            background-color: rgb(90, 199, 137);
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h1>JavaScript là gì?</h1>
+        <p>Javascript là một ngôn ngữ lập trình kịch bản dựa vào đối tượng phát triển có sẵn hoặc tự định nghĩa.</p>
+        <p>Giải thích: JS cho phép các nhà phát triển triển khai các tính năng phức tạp hơn trên các trang web, 
+        làm cho trang web trở lên sống động hơn, tương tác với người dùng tốt hơn thay vì chỉ hiển thị thông tin tĩnh để người dùng đọc.
+        Ví dụ như các tính năng tương tác với người dùng, bình luận, các hình ảnh 2D, 3D, video nhạc,... </p>
+    </section>
+    <section>
+        <h2>Các biến var, let và conts trong JS</h2>
+        <h3>Biến var</h3>
+        <p>Biến var dùng để khai báo các kiểu biến như number, string, boolean,... trừ trường hợp được khai báo trong một function
+         (khi đó biến var sẽ có scope là <strong>function/locally scoped</strong> )</p>
+         <p>Đặc biệt, biến var có tính năng hoisting, nghĩa là dù được đặt ở đâu thì biến var cũng được đưa lên đầu scope trước khi code được thực hiện.</p>
+         <p>Nhưng vấn đề của biến var là khi số lượng dòng code quá lớn, hoặc chúng ta cũng không biết được giá trị của biến liệu có bị thay đổi
+         ở đoạn code nào sẽ dẫn đến việc debug trở lên khó khăn</p>
+    </section>
+    <section>
+        <h3>Biến let</h3>
+        <p>Một trong những nguyên nhân khiến let có thể thay thế var để xử lý vấn đề nêu trên là vì biến let được khai báo sẽ có scope là <strong>block scoped</strong> chứ không phải globally hay locally scoped.</p>
+        <p>Biến let có thể được gán lại (cập nhật giá trị của biến) nhưng không thể khai báo lại</p>
+        <p>Giống với var, let cũng có tính hoisting tuy nhiên lại khác nhau ở chỗ thay vì var được khởi tạo với giá trị là undefined thì let sẽ không có bất kỳ giá trị khởi tạo nào. 
+        Điều này dẫn đến việc nếu chúng ta sử dụng biến let trước khi khai báo thì sẽ gặp lỗi Reference Error</p>
+        <p>Biến let phụ thuộc vào vùng chết tạm thời</p>
+    </section>
+    <section>
+        <h3>Biến const</h3>
+        <p>Tương tự với let cũng có scope là block scoped, và hoisting thì chúng ta có thêm 1 kiểu khai báo biến nữa là const.</p>
+        <p>const rất giống với let vì các biến được khai báo với const cũng có phạm vi khối.</p>
+        <p> Trong biến const nếu trường hợp kiểu của biến là primitive (bao gồm string, number, boolean, null, và undefined) thì chúng ta sẽ không thể
+         tái khai báo hay cập nhật giá trị mới để thay thế cho giá trị trước đó của biến.</p>
+    </section>
+    <section>
+        <h2>Toán tử trong JS</h2>
+        <ul>
+            <li>Toán tử số học</li>
+            <li>toán tử so sánh (quan hệ)</li>
+            <li>Toán tử logic</li>
+            <li>Toán tử gán</li>
+            <li>Các toán tử đặc biệt</li>
+        </ul>
+    </section>
+    <section>
+        <h3>Toán tử số học</h3>
+        <p>Toán tử số học được sử dụng để thực hiện các phép toán số học trên các toán hạng. Các toán tử sau đây được gọi là toán tử số học JavaScript.</p>
+        <table border="1" class="table__math">
+            <tr>
+                <th>Toán tử</th>
+                <th>Mô tả</th>
+                <th>Ví dụ</th>
+            </tr>
+            <tr>
+                <td>+</td>
+                <td>Phép cộng</td>
+                <td>10 + 20 = 30</td>
+            </tr>
+            <tr>
+                <td>-</td>
+                <td>Phép trừ</td>
+                <td>20 - 10 = 10</td>
+            </tr>
+            <tr>
+                <td>*</td>
+                <td>Phép nhân</td>
+                <td>20 * 10 = 200</td>
+            </tr>
+            <tr>
+                <td>/</td>
+                <td>Phép chia lấy phần nguyên</td>
+                <td>20 / 3 = 6 (dư 2, lấy 6)</td>
+            </tr>
+            <tr>
+                <td>%</td>
+                <td>Phép chia lấy dư</td>
+                <td>20 % 3 = 6 (dư 2, lấy 2)</td>
+            </tr>
+            <tr>
+                <td>++</td>
+                <td>Tăng 1 đơn vị</td>
+                <td>var a = 10; a++ = 11</td>
+            </tr>
+            <tr>
+                <td>--</td>
+                <td>Giảm 1 đơn vị</td>
+                <td>var a = 10; a-- = 9</td>
+            </tr>
+        </table>
+    </section>
+    <section>
+        <h3>Toán tử so sánh</h3>
+        <p>Toán tử so sánh JavaScript so sánh hai toán hạng. Các toán tử so sánh như sau:</p>
+        <table border="1" class="table__math">
+            <tr>
+                <th>Toán tử</th>
+                <th>Mô tả</th>
+                <th>Ví dụ</th>
+            </tr>
+            <tr>
+                <td>==</td>
+                <td>So sánh bằng</td>
+                <td>10 == 20 = false</td>
+            </tr>
+            <tr>
+                <td>===</td>
+                <td>Giống hệt nhau (bằng và cùng kiểu dữ liệu)</td>
+                <td>10 === 20 = false</td>
+            </tr>
+            <tr>
+                <td>!=</td>
+                <td>Không bằng</td>
+                <td>10 != 20 = true</td>
+            </tr>
+            <tr>
+                <td>!==</td>
+                <td>không giống hệt nhau</td>
+                <td>20 !== 20 = false</td>
+            </tr>
+            <tr>
+                <td>></td>
+                <td>Lớn hơn</td>
+                <td>20 > 10 = true</td>
+            </tr>
+            <tr>
+                <td>>=</td>
+                <td>Lớn hơn hoặc bằng</td>
+                <td>20 >= 10 = true</td>
+            </tr>
+            <tr>
+                <td>&lt;</td>
+                <td>Nhỏ hơn</td>
+                <td>20 &lt; 10 = false</td>
+            </tr>
+            <tr>
+                <td>=&lt;</td>
+                <td>Nhỏ hơn hoặc bằng</td>
+                <td>20 =&lt; = false</td>
+            </tr>
+        </table>
+    </section>
+    <section>
+        <h3>Toán tử logic</h3>
+        <p>Các toán tử sau được gọi là toán tử logic trong JavaScript.</p>
+        <table border="1" class="table__math">
+            <tr>
+                <th>Toán tử</th>
+                <th>Mô tả</th>
+                <th>Ví dụ</th>
+            </tr>
+            <tr>
+                <td>&&</td>
+                <td>Logic AND</td>
+                <td>(10 == 20 && 20 == 33) = false</td>
+            </tr>
+            <tr>
+                <td>||</td>
+                <td>Logic OR</td>
+                <td>(10 == 20 || 20 == 30) = false</td>
+            </tr>
+            <tr>
+                <td>!</td>
+                <td>Logic NOT</td>
+                <td>!(10 == 20) = true</td>
+            </tr>
+        </table>
+    </section>
+    <section>
+        <h3 style="color:red">Toán tử gán</h3>
+        <p>Các toán tử sau được gọi là toán tử gán trong JavaScript.</p>
+        <table border="1" class="table__math">
+            <tr>
+                <th>Toán tử</th>
+                <th>Mô tả</th>
+                <th>Ví dụ</th>
+            </tr>
+            <tr>
+                <td>=</td>
+                <td>Gán</td>
+                <td>5 + 5 = 10</td>
+            </tr>
+            <tr>
+                <td>+=</td>
+                <td>Cộng và Gán</td>
+                <td>var a = 10; a += 20; a = 30</td>
+            </tr>
+            <tr>
+                <td>-=</td>
+                <td>Trừ và Gán</td>
+                <td>var a = 20; a -= 10; a = 10</td>
+            </tr>
+            <tr>
+                <td>*=</td>
+                <td>Nhân và Gán</td>
+                <td>var a = 5; a *= 8; a = 40</td>
+            </tr>
+            <tr>
+                <td>/=</td>
+                <td>Chia lấy phần nguyên và Gán</td>
+                <td>var a = 12; a /= 3; a = 4</td>
+            </tr>
+            <tr>
+                <td>%=</td>
+                <td>Chia lấy phần dư và Gán</td>
+                <td>var a = 20; a %= 3; a = 2</td>
+            </tr>
+        </table>
+    </section>
+    <section>
+        <h3>Các toán tử đặc biệt</h3>
+        <table border="1" class="table__math">
+            <tr>
+                <th>Toán tử</th>
+                <th>Mô tả</th>
+            </tr>
+            <tr>
+                <td>(?:)</td>
+                <td>Toán tử điều kiện trả về giá trị dựa trên điều kiện. Nó giống như if-else.</td>
+            </tr>
+            <tr>
+                <td>,</td>
+                <td>Cho phép nhiều biểu thức được đánh giá như một câu lệnh đơn.</td>
+            </tr>
+            <tr>
+                <td>delete</td>
+                <td>Toán tử delete xóa một thuộc tính của đối tượng.</td>
+            </tr>
+            <tr>
+                <td>in</td>
+                <td>Toán tử in kiểm tra nếu đối tượng có thuộc tính đã cho.</td>
+            </tr>
+            <tr>
+                <td>instanceof</td>
+                <td>Kiểm tra nếu đối tượng là một thể hiện của kiểu dữ liệu đã cho.</td>
+            </tr>
+            <tr>
+                <td>new</td>
+                <td>Tạo một thể hiện của môt đối tượng.</td>
+            </tr>
+            <tr>
+                <td>typeof</td>
+                <td>Kiểm tra kiểu đối tượng.</td>
+            </tr>
+            <tr>
+                <td>void</td>
+                <td>Nó loại bỏ giá trị trả về của biểu thức.</td>
+            </tr>
+            <tr>
+                <td>yield</td>
+                <td>Kiểm tra những gì được trả về trong một trình tạo bởi trình lặp của trình tạo.</td>
+            </tr>
+        </table>
+    </section>
+    <section>
+        <h3>Các phép toán trong js</h3>
+        <p>// khai báo biến: Object: Dùng để mô tả về một đối tượng nào đó.<br>
+            // var dog1 = {<br>
+            //     type: 'chó ta',<br>
+            //     name: 'dôn'<br>
+            // };<br>
+            // var dog2 = {<br>
+            //     type: 'golden'<br>
+            // };<br>
+            // var dog3 = {<br>
+            //     type: 'husky'<br>
+            // };<br>
+            // var bunofDogs = [dog1, dog2, dog3];<br>
+            // console.log(bunofDogs[0].name);<br>
+            // var dog4 = {<br>
+            //     type: 'shiba'<br>
+            // };<br>
+            // bunofDogs[0] = dog4;<br>
+            // console.log(bunofDogs);<br>
+            
+            
+            /* var fen1 = {<br>
+                name: 'Minh',<br>
+                height: '163',<br>
+                contry: 'Việt Nam',<br>
+                hobbies: 'girl'<br>
+            };<br>
+            var fen2 = {<br>
+                name: 'Tuấn',<br>
+                height: '162',<br>
+                contry: 'Việt Nam',<br>
+                hobbies: 'casino'<br>
+            };<br>
+            var fen3 = {<br>
+                name: 'Dũng',<br>
+                height: '166',<br>
+                contry: 'Việt Nam',<br>
+                hobbies: 'girl,casino'<br>
+            };<br>
+            var companyFriends = [fen1, fen2, fen3];<br>
+            // console.log(companyFriends[0].hobbies);<br>
+            var fen4 = {<br>
+                name: 'Gu Je Song',<br>
+                height: '162',<br>
+                country: 'Hàn Quốc',<br>
+                hobbies: 'lotto'<br>
+            };<br>
+            companyFriends[0] = fen4;<br>
+            console.log(companyFriends[0].name); */</p>
+    </section>
+</body>
+</html>
